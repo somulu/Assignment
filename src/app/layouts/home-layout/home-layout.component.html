@@ -1,0 +1,24 @@
+<div id="wrapper" class="wrapper">
+  <div class="holder">
+    <div class="practicalHeader">
+      <div class="container-fluid">
+        <div class="col-xs-12 col-sm-8 pull-left">
+          <h2 class="header-text">PRACTICAL</h2>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="user hidden-xs">
+            <div class="userName" (click)="onLogOut()">
+              LogOut
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- header end -->
+
+    <div class="mid-container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

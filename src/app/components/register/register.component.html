@@ -1,0 +1,82 @@
+<div class="practicalHeader">
+  <div class="container">
+    <div class="col-xs-12 col-md-8">
+      <h2 class="login-header-text">Assignment</h2>
+    </div>
+  </div>
+</div>
+
+
+<div class="mid-container">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+    <div class="login-box">
+      <h2>REGISTER</h2>
+      <div class="login-fields">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+          <div class="input-box">
+            <label class="fieldTitle">Firstname
+              <sup class="super">*</sup>
+            </label>
+            <input type="text" placeholder="Firstname" formControlName="firstname" />
+            <div class="errorMsg" *ngIf="(isValidInfo || isValidName && registerForm.get('firstname').value == null) || (registerForm.get('firstname').invalid && (registerForm.get('firstname').dirty || registerForm.get('firstname').touched))">Firstname is Required</div>
+          </div>
+
+          <div class="input-box">
+            <label class="fieldTitle">Middlename
+              <sup class="super">*</sup>
+            </label>
+            <input type="text" placeholder="Middlename" formControlName="middlename" />
+            <div class="errorMsg" *ngIf="(isValidInfo || isValidName && registerForm.get('middlename').value == null) || (registerForm.get('middlename').invalid && (registerForm.get('middlename').dirty || registerForm.get('middlename').touched))">Middlename is Required</div>
+          </div>
+
+          <div class="input-box">
+            <label class="fieldTitle">Lastname
+              <sup class="super">*</sup>
+            </label>
+            <input type="text" placeholder="Lastname" formControlName="lastname" />
+            <div class="errorMsg" *ngIf="(isValidInfo || isValidName && registerForm.get('lastname').value == null) || (registerForm.get('lastname').invalid && (registerForm.get('lastname').dirty || registerForm.get('lastname').touched))">Lastname is Required</div>
+          </div>
+
+          <div class="input-box">
+            <label class="fieldTitle">MobileNo
+              <sup class="super">*</sup>
+            </label>
+            <input type="text" placeholder="MobileNo" maxlength="10" OnlyNumber formControlName="mobileNo" />
+            <div class="errorMsg" *ngIf="(isValidInfo || isValidName && registerForm.get('mobileNo').value == null) || (registerForm.get('mobileNo').invalid && (registerForm.get('mobileNo').dirty || registerForm.get('mobileNo').touched))">MobileNo is Required</div>
+          </div>
+
+          <div class="input-box">
+            <label class="fieldTitle">Password
+              <sup class="super">*</sup>
+            </label>
+            <input type="password" placeholder="Password" formControlName="password" />
+            <div class="errorMsg" *ngIf="(isValidInfo || isValidPassword && registerForm.get('password').value == null) || (registerForm.get('password').invalid && (registerForm.get('password').dirty || registerForm.get('password').touched))">Password is Required</div>
+          </div>
+
+          <div class="input-box">
+            <label class="fieldTitle">Confirm Password
+              <sup class="super">*</sup>
+            </label>
+            <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
+            <div class="errorMsg" *ngIf="(isValidInfo || isValidPassword && registerForm.get('confirmPassword').value == null) || (registerForm.get('confirmPassword').invalid && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched))">Confirm Password is Required</div>
+            <div class="errorMsg" *ngIf="registerForm.errors?.mismatchedPasswords">
+              Password not match
+            </div>
+          </div>
+
+
+          <div class="clear mb10"></div>
+          <div class="col-xs-6 nopadding">
+            <button type="Submit" class="loginBtn">Register
+              <img *ngIf="loading" src="assets/images/loader.gif" />
+            </button>
+          </div>
+          <div class="col-xs-6 nopadding">
+            <button type="button" class="loginBtn" routerLink="../login">Login</button>
+          </div>
+          <div class="clear mb20"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,152 @@
+<div class="container mt-4">
+
+  <div class="row">
+
+    <div class="col-md-6 col-sm-6 col-12">
+      <h2>Students List</h2>
+    </div>
+
+  </div>
+
+  <div class="row mb-4">
+
+    <div class="col-md-2 col-sm-2 col-12">
+      <a class="btn btn-primary float-right" (click)="addStudent()">Add Student</a>
+    </div>
+
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <!-- <th>ID</th> -->
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Class</th>
+        <th>Enrollment Year</th>
+        <th>City</th>
+        <th>Country</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of studentList">
+          <td>{{student.id}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.email}}</td>
+          <td>{{student.class}}</td>
+          <td>{{student.enrollmantYear}}</td>
+          <td>{{student.city}}</td>
+          <td>{{student.country}}</td>
+          <td class="cp">
+            <a href="javascript:void(0)" (click)="editUser(student)">EDIT</a>
+          </td>
+          <td class="cp">
+            <a href="javascript:void(0)" (click)="deleteUser(student.id)">DELETE</a>
+          </td>
+          
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div id="addEditPopup" class="modal fade" role="dialog">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+    <div class="EditPopup">
+      <div class="modal-dialog">
+        <form [formGroup]="studentForm">
+          <!-- Modal content-->
+          <div class="show-modal-popup">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Student Form</h4>
+              </div>
+              <div class="modal-body">
+                <div class="col-xs-12 col-sm-4">
+                  <div class="input-box">
+                    <label class="fieldTitle">Student Id
+                      <sup class="super">*</sup>
+                    </label>
+                    <input type="text" [readonly]="mode == 'edit'" formControlName="id" name="id"  />
+                    <error-messages [control]="studentForm.get('id')"></error-messages>
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+                  <div class="input-box">
+                    <label class="fieldTitle">Student Name
+                      <sup class="super">*</sup>
+                    </label>
+                    <input type="text" formControlName="name" name="name" />
+                    <error-messages [control]="studentForm.get('name')"></error-messages>
+                  </div>
+                </div>                
+              
+                <div class="col-xs-12 col-sm-4">
+                  <div class="input-box">
+                    <label class="fieldTitle">Email
+                      <sup class="super">*</sup>
+                    </label>
+                    <input type="text" formControlName="email" name="email" required  />
+                    <error-messages [control]="studentForm.get('email')"></error-messages>
+                  </div>
+                </div>
+              
+                <div class="col-xs-12 col-sm-4">
+                  <div class="input-box">
+                    <label class="fieldTitle">Class
+                      <sup class="super">*</sup>
+                    </label>
+                    <input type="text" formControlName="class" name="class"  />
+                    <error-messages [control]="studentForm.get('class')"></error-messages>
+                  </div>
+                </div>
+              
+                <div class="col-xs-12 col-sm-4">
+                  <div class="input-box">
+                    <label class="fieldTitle">Enrollment Year
+                      <sup class="super">*</sup>
+                    </label>
+                    <input type="text" formControlName="enrollmantYear" name="enrollmantYear"  />
+                    <error-messages [control]="studentForm.get('enrollmantYear')"></error-messages>
+                  </div>
+                </div>
+              
+                <div class="col-xs-12 col-sm-4">
+                  <div class="input-box">
+                    <label class="fieldTitle">City
+                      <sup class="super">*</sup>
+                    </label>
+                    <input type="text" formControlName="city" name="city"  />
+                    <error-messages [control]="studentForm.get('city')"></error-messages>
+                  </div>
+                </div>
+              
+                <div class="col-xs-12 col-sm-4">
+                  <div class="input-box">
+                    <label class="fieldTitle">Country
+                      <sup class="super">*</sup>
+                    </label>
+                    <input type="text" formControlName="country" name="country"  />
+                    <error-messages [control]="studentForm.get('country')"></error-messages>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <div class="footer-content txtCenter">
+                  <button type="button" class="blueBtn-big mr15" [disabled]="!studentForm.valid" (click)="updateStudentForm()" id="btnDeleteMenuItem">Save</button>
+                  <button type="button" class="cancelBtn" (click)="studentForm.reset();" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
